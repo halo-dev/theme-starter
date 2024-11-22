@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html
   lang="en"
   xmlns:th="https://www.thymeleaf.org"
@@ -12,13 +12,20 @@
       content="width=device-width, initial-scale=1, maximum-scale=2"
     />
     <title th:text="${site.title}"></title>
-    <link rel="stylesheet" th:href="@{/assets/css/style.css}" />
-    <script th:src="@{/assets/js/main.js}"></script>
+    <link
+      rel="stylesheet"
+      th:href="@{/assets/css/style.css?v={version}(version=${theme.spec.version})}"
+    />
+    <script
+      th:src="@{/assets/js/main.js?v={version}(version=${theme.spec.version})}"
+    ></script>
     <th:block th:if="${head != null}">
       <th:block th:replace="${head}" />
     </th:block>
   </head>
-  <body th:style="'background-color: '+${theme.config.style.background_color ?: '#f2f2f2'}">
+  <body
+    th:style="'background-color: '+${theme.config.style.background_color ?: '#f2f2f2'}"
+  >
     <section>
       <th:block th:replace="${content}" />
     </section>
