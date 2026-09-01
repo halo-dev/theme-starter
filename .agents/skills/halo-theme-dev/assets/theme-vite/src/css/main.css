@@ -1,0 +1,167 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+a {
+  color: #0070f3;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.site-header {
+  border-bottom: 1px solid #eee;
+  padding: 1rem 0;
+}
+
+.site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.site-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #333;
+}
+
+.site-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 1rem;
+}
+
+.site-main {
+  padding: 2rem 0;
+}
+
+.post-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.post-item {
+  padding: 1.5rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.post-item:last-child {
+  border-bottom: none;
+}
+
+.post-title {
+  margin: 0 0 0.25rem;
+  font-size: 1.25rem;
+}
+
+.post-meta {
+  color: #666;
+  font-size: 0.875rem;
+  margin: 0 0 0.5rem;
+}
+
+.post-excerpt {
+  color: #555;
+  margin: 0;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2rem 0;
+}
+
+.article-header {
+  margin-bottom: 2rem;
+}
+
+.article-title {
+  margin: 0 0 0.5rem;
+  font-size: 2rem;
+}
+
+.article-meta {
+  color: #666;
+  font-size: 0.875rem;
+}
+
+.article-content {
+  max-width: 100%;
+  line-height: 1.8;
+}
+
+.article-content img {
+  max-width: 100%;
+}
+
+.article-tags,
+.article-categories {
+  margin-top: 1.5rem;
+}
+
+.tag,
+.category {
+  display: inline-block;
+  padding: 0.125rem 0.5rem;
+  background: #f0f0f0;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  margin: 0.25rem;
+}
+
+.post-nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem 0;
+  border-top: 1px solid #eee;
+  margin-top: 2rem;
+}
+
+.site-footer {
+  border-top: 1px solid #eee;
+  padding: 1.5rem 0;
+  text-align: center;
+  color: #666;
+  font-size: 0.875rem;
+}
+
+.archive-year {
+  margin-top: 2rem;
+}
+
+.tag-list,
+.category-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}

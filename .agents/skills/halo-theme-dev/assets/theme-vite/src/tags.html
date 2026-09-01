@@ -1,0 +1,18 @@
+<include src="layout.html">
+  <template name="head">
+    <title th:text="|Tags - ${site.title}|">Tags</title>
+  </template>
+
+  <h1>Tags</h1>
+  <ul class="tag-list">
+    <li th:each="tag : ${tags.items}">
+      <a th:href="@{${tag.status.permalink}}" th:text="${tag.spec.displayName}" class="tag"></a>
+    </li>
+  </ul>
+
+  <nav class="pagination" th:if="${tags.hasPrevious() || tags.hasNext()}">
+    <a th:if="${tags.hasPrevious()}" th:href="@{${tags.prevUrl}}">Previous</a>
+    <span th:text="|${tags.page} / ${tags.totalPages}|"></span>
+    <a th:if="${tags.hasNext()}" th:href="@{${tags.nextUrl}}">Next</a>
+  </nav>
+</include>

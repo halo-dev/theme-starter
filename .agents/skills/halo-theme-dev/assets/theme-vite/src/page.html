@@ -1,0 +1,20 @@
+<include src="layout.html">
+  <template name="head">
+    <title th:text="|${singlePage.spec.title} - ${site.title}|">Page Title</title>
+  </template>
+
+  <article>
+    <header class="article-header">
+      <h1 class="article-title" th:text="${singlePage.spec.title}"></h1>
+    </header>
+    <div class="article-content" th:utext="${singlePage.content.content}"></div>
+  </article>
+
+  <div th:if="${haloCommentEnabled}">
+    <halo:comment
+      group="content.halo.run"
+      kind="SinglePage"
+      th:attr="name=${singlePage.metadata.name}"
+    />
+  </div>
+</include>

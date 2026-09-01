@@ -1,0 +1,20 @@
+apiVersion: theme.halo.run/v1alpha1
+kind: Theme
+metadata:
+  name: theme-vite
+spec:
+  displayName: Vite Theme
+  author:
+    name: Your Name
+    website: https://example.com
+  description: A Halo theme powered by vite-plugin-halo-theme
+  logo: ""
+  homepage: ""
+  repo: ""
+  issues: ""
+  settingName: "theme-vite-setting"
+  configMapName: "theme-vite-configmap"
+  version: 1.0.0
+  requires: ">=2.0.0"
+  license:
+    - name: "MIT"

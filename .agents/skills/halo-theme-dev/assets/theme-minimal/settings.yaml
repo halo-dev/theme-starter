@@ -1,0 +1,14 @@
+apiVersion: v1alpha1
+kind: Setting
+metadata:
+  name: theme-minimal-setting
+spec:
+  forms:
+    - group: basic
+      label: Basic Settings
+      formSchema:
+        - $formkit: text
+          name: custom_footer
+          label: Custom footer text
+          value: ""
+          placeholder: "e.g. Copyright © 2024 My Site"

@@ -1,0 +1,20 @@
+apiVersion: theme.halo.run/v1alpha1
+kind: Theme
+metadata:
+  name: theme-minimal
+spec:
+  displayName: Minimal Theme
+  author:
+    name: Your Name
+    website: https://example.com
+  description: A minimal Halo theme starter
+  logo: ""
+  homepage: ""
+  repo: ""
+  issues: ""
+  settingName: "theme-minimal-setting"
+  configMapName: "theme-minimal-configmap"
+  version: 1.0.0
+  requires: ">=2.0.0"
+  license:
+    - name: "MIT"

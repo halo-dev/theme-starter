@@ -1,0 +1,56 @@
+<include src="layout.html">
+  <template name="head">
+    <title th:text="|${post.spec.title} - ${site.title}|">Post Title</title>
+    <script type="module" src="./js/post.ts"></script>
+  </template>
+
+  <article>
+    <header class="article-header">
+      <h1 class="article-title" th:text="${post.spec.title}"></h1>
+      <div class="article-meta">
+        <time th:text="${#temporals.format(post.spec.publishTime, 'yyyy-MM-dd')}"></time>
+        <span th:if="${not #lists.isEmpty(post.categories)}">
+          &nbsp;·&nbsp;
+          <a
+            th:each="cat : ${post.categories}"
+            th:href="@{${cat.status.permalink}}"
+            th:text="${cat.spec.displayName}"
+            class="category"
+          ></a>
+        </span>
+      </div>
+    </header>
+
+    <div class="article-content" th:utext="${post.content.content}"></div>
+
+    <div class="article-tags" th:if="${not #lists.isEmpty(post.tags)}">
+      <a
+        th:each="tag : ${post.tags}"
+        th:href="@{${tag.status.permalink}}"
+        th:text="${tag.spec.displayName}"
+        class="tag"
+      ></a>
+    </div>
+
+    <nav class="post-nav" th:with="cursor = ${postFinder.cursor(post.metadata.name)}">
+      <span>
+        <a
+          th:if="${cursor.hasPrevious()}"
+          th:href="@{${cursor.previous.status.permalink}}"
+          th:text="|← ${cursor.previous.spec.title}|"
+        ></a>
+      </span>
+      <span>
+        <a
+          th:if="${cursor.hasNext()}"
+          th:href="@{${cursor.next.status.permalink}}"
+          th:text="|${cursor.next.spec.title} →|"
+        ></a>
+      </span>
+    </nav>
+  </article>
+
+  <div th:if="${haloCommentEnabled}">
+    <halo:comment group="content.halo.run" kind="Post" th:attr="name=${post.metadata.name}" />
+  </div>
+</include>

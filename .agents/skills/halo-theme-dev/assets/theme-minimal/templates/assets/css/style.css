@@ -1,0 +1,34 @@
+body {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem;
+  font-family: system-ui, sans-serif;
+}
+a {
+  color: #0070f3;
+}
+header {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+}
+header a {
+  text-decoration: none;
+  color: inherit;
+}
+nav {
+  display: flex;
+  gap: 1rem;
+}
+footer {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+  color: #666;
+  font-size: 0.875rem;
+}
+article img {
+  max-width: 100%;
+}

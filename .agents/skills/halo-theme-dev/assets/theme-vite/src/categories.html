@@ -1,0 +1,22 @@
+<include src="layout.html">
+  <template name="head">
+    <title th:text="|Categories - ${site.title}|">Categories</title>
+  </template>
+
+  <h1>Categories</h1>
+  <ul class="category-list">
+    <li th:each="cat : ${categories.items}">
+      <a
+        th:href="@{${cat.status.permalink}}"
+        th:text="|${cat.spec.displayName} (${cat.postCount})|"
+        class="category"
+      ></a>
+    </li>
+  </ul>
+
+  <nav class="pagination" th:if="${categories.hasPrevious() || categories.hasNext()}">
+    <a th:if="${categories.hasPrevious()}" th:href="@{${categories.prevUrl}}">Previous</a>
+    <span th:text="|${categories.page} / ${categories.totalPages}|"></span>
+    <a th:if="${categories.hasNext()}" th:href="@{${categories.nextUrl}}">Next</a>
+  </nav>
+</include>

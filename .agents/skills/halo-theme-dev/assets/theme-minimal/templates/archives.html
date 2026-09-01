@@ -1,0 +1,25 @@
+<!doctype html>
+<html
+  xmlns:th="https://www.thymeleaf.org"
+  th:replace="~{layout :: html(head = null, content = ~{::content})}"
+>
+  <th:block th:fragment="content">
+    <h1>Archives</h1>
+    <th:block th:each="archive : ${archives.items}">
+      <h2 th:text="${archive.year}"></h2>
+      <th:block th:each="month : ${archive.months}">
+        <h3 th:text="|${archive.year}-${month.month}|"></h3>
+        <ul>
+          <li th:each="post : ${month.posts}">
+            <a th:href="@{${post.status.permalink}}" th:text="${post.spec.title}"></a>
+          </li>
+        </ul>
+      </th:block>
+    </th:block>
+    <nav th:if="${archives.hasPrevious() || archives.hasNext()}">
+      <a th:if="${archives.hasPrevious()}" th:href="@{${archives.prevUrl}}">Previous</a>
+      <span th:text="|${archives.page} / ${archives.totalPages}|"></span>
+      <a th:if="${archives.hasNext()}" th:href="@{${archives.nextUrl}}">Next</a>
+    </nav>
+  </th:block>
+</html>

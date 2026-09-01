@@ -1,0 +1,39 @@
+<!doctype html>
+<html
+  lang="en"
+  xmlns:th="https://www.thymeleaf.org"
+  th:lang="${#locale.toLanguageTag}"
+  th:fragment="html (head, content)"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title th:if="${head == null}" th:text="${site.title}">Site Title</title>
+    <link rel="stylesheet" th:href="@{/assets/css/style.css?v={v}(v=${theme.spec.version})}" />
+    <th:block th:if="${head != null}">
+      <th:block th:replace="${head}" />
+    </th:block>
+  </head>
+  <body>
+    <header>
+      <a th:href="@{/}" th:text="${site.title}"></a>
+      <nav th:with="menu = ${menuFinder.getPrimary()}">
+        <a
+          th:each="item : ${menu.menuItems}"
+          th:href="@{${item.status.href}}"
+          th:text="${item.status.displayName}"
+          th:target="${item.spec.target?.value}"
+        ></a>
+      </nav>
+    </header>
+
+    <main>
+      <th:block th:replace="${content}" />
+    </main>
+
+    <footer>
+      <p th:text="${theme.config.basic.custom_footer ?: site.title}"></p>
+      <halo:footer />
+    </footer>
+  </body>
+</html>

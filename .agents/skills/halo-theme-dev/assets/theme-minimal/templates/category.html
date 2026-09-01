@@ -1,0 +1,20 @@
+<!doctype html>
+<html
+  xmlns:th="https://www.thymeleaf.org"
+  th:replace="~{layout :: html(head = null, content = ~{::content})}"
+>
+  <th:block th:fragment="content">
+    <h1 th:text="|Category: ${category.spec.displayName}|"></h1>
+    <ul>
+      <li th:each="post : ${posts.items}">
+        <a th:href="@{${post.status.permalink}}" th:text="${post.spec.title}"></a>
+        <time th:text="${#temporals.format(post.spec.publishTime, 'yyyy-MM-dd')}"></time>
+      </li>
+    </ul>
+    <nav th:if="${posts.hasPrevious() || posts.hasNext()}">
+      <a th:if="${posts.hasPrevious()}" th:href="@{${posts.prevUrl}}">Previous</a>
+      <span th:text="|${posts.page} / ${posts.totalPages}|"></span>
+      <a th:if="${posts.hasNext()}" th:href="@{${posts.nextUrl}}">Next</a>
+    </nav>
+  </th:block>
+</html>

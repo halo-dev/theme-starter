@@ -1,0 +1,16 @@
+<include src="layout.html">
+  <template name="head">
+    <title th:text="|${author.spec.displayName} - ${site.title}|">Author</title>
+  </template>
+
+  <section>
+    <h1 th:text="${author.spec.displayName}"></h1>
+    <p th:if="${not #strings.isEmpty(author.spec.bio)}" th:text="${author.spec.bio}"></p>
+
+    <ul class="post-list">
+      <include src="post-card.html"></include>
+    </ul>
+
+    <include src="pagination.html"></include>
+  </section>
+</include>

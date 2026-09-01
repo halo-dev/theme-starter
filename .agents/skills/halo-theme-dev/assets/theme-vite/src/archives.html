@@ -1,0 +1,32 @@
+<include src="layout.html">
+  <template name="head">
+    <title th:text="|Archives - ${site.title}|">Archives</title>
+  </template>
+
+  <h1>Archives</h1>
+
+  <th:block th:each="archive : ${archives.items}">
+    <div class="archive-year">
+      <h2 th:text="${archive.year}"></h2>
+      <th:block th:each="month : ${archive.months}">
+        <h3 th:text="|${archive.year}-${month.month}|"></h3>
+        <ul class="post-list">
+          <li class="post-item" th:each="post : ${month.posts}">
+            <h2 class="post-title">
+              <a th:href="@{${post.status.permalink}}" th:text="${post.spec.title}"></a>
+            </h2>
+            <p class="post-meta">
+              <time th:text="${#temporals.format(post.spec.publishTime, 'yyyy-MM-dd')}"></time>
+            </p>
+          </li>
+        </ul>
+      </th:block>
+    </div>
+  </th:block>
+
+  <nav class="pagination" th:if="${archives.hasPrevious() || archives.hasNext()}">
+    <a th:if="${archives.hasPrevious()}" th:href="@{${archives.prevUrl}}">Previous</a>
+    <span th:text="|${archives.page} / ${archives.totalPages}|"></span>
+    <a th:if="${archives.hasNext()}" th:href="@{${archives.nextUrl}}">Next</a>
+  </nav>
+</include>

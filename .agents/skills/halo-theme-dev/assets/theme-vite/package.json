@@ -1,0 +1,14 @@
+{
+  "type": "module",
+  "scripts": {
+    "dev": "vite build --watch",
+    "build": "vite build && theme-package",
+    "build-only": "vite build"
+  },
+  "devDependencies": {
+    "@halo-dev/theme-package-cli": "^1.0.1",
+    "@halo-dev/vite-plugin-halo-theme": "1.0.3",
+    "vite": "^8.0.0"
+  },
+  "packageManager": "pnpm@10.33.0"
+}

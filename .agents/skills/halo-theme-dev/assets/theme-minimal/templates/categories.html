@@ -1,0 +1,17 @@
+<!doctype html>
+<html
+  xmlns:th="https://www.thymeleaf.org"
+  th:replace="~{layout :: html(head = null, content = ~{::content})}"
+>
+  <th:block th:fragment="content">
+    <h1>Categories</h1>
+    <ul>
+      <li th:each="cat : ${categories.items}">
+        <a
+          th:href="@{${cat.status.permalink}}"
+          th:text="|${cat.spec.displayName} (${cat.postCount})|"
+        ></a>
+      </li>
+    </ul>
+  </th:block>
+</html>

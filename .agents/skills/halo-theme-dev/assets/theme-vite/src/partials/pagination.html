@@ -1,0 +1,5 @@
+<nav class="pagination" th:if="${posts.hasPrevious() || posts.hasNext()}">
+  <a th:if="${posts.hasPrevious()}" th:href="@{${posts.prevUrl}}">Previous</a>
+  <span th:text="|${posts.page} / ${posts.totalPages}|"></span>
+  <a th:if="${posts.hasNext()}" th:href="@{${posts.nextUrl}}">Next</a>
+</nav>

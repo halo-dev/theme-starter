@@ -1,0 +1,18 @@
+<li class="post-item" th:each="post : ${posts.items}">
+  <h2 class="post-title">
+    <a th:href="@{${post.status.permalink}}" th:text="${post.spec.title}"></a>
+  </h2>
+  <p class="post-meta">
+    <time th:text="${#temporals.format(post.spec.publishTime, 'yyyy-MM-dd')}"></time>
+    <span th:if="${not #lists.isEmpty(post.categories)}">
+      &nbsp;·&nbsp;
+      <a
+        th:each="cat : ${post.categories}"
+        th:href="@{${cat.status.permalink}}"
+        th:text="${cat.spec.displayName}"
+        class="category"
+      ></a>
+    </span>
+  </p>
+  <p class="post-excerpt" th:text="${post.status.excerpt}"></p>
+</li>
